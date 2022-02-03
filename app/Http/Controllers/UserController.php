@@ -50,10 +50,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user->load('posts');
-
-        return view('users.show', [
-            'user' => $user,
-        ]);
+        return view('users.show', [ 'user' => $user,]);
     }
 
     /**

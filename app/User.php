@@ -38,12 +38,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
    
-    public function posts(){
-      return $this->hasMany(\App\Post);
+        public function posts()
+    {
+        return $this->hasMany(\App\Post);
     }
 
  
-    public function getOwnPaginateByLimit(int $limit_count = 5)
+        public function getOwnPaginateByLimit(int $limit_count = 5)
     {
         return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }

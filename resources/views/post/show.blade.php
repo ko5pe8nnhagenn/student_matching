@@ -10,81 +10,71 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <h1>投稿詳細</h1>
-        <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-        <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
-            @csrf
-            @method('DELETE')
-            <button onclick="deletePost()">delete</button> 
-        </form>
-         <h2 class="title">
-            {{ $post->title }}
-        </h2>
-        <small>{{ $post->user->name }}</small>
-         <div class="content">
-            <div class="content__post">
-                <h3>本文</h3>
-                <p>{{ $post->content}}</p>    
-                    
-            </div>
-             <div class="meeting_place">
-            <div class="meeting_place__post">
-                <h3>集合場所</h3>
-                <p>{{ $post->meeting_place}}</p>    
-                    
-            </div>
-             <div class="meeting_time">
-            <div class="meeting_time__post">
-                <h3>集合時間</h3>
-                <p>{{ $post->meeting_time}}</p>    
-                    
-            </div>
-            
-            <a href="">{{ $post->category->name }}</a>
-        </div>
-                   <div class='comments'>
-            @foreach ($comments as $comment)
-                <div class='comment'>
-                    <h2 class='comment'>{{ $comment->comments }}</h2>
-                   
-                    
-                                 投稿者:
-                <h2 >{{ $comment->user->name }}</h2>
-                      
-                    </p>
+        <div class=post>
+            <h1>*投稿詳細*</h1>
+                <h3 class="title">
+                     {{ $post->title }}
+                 </h3>
+                <small>
+                    <投稿者>{{ $post->user->name }}
+                </small>
+            <div class="content">
+                <div class="content__post">
+                        <h4>〇本文</h4>
+                        <p>{{ $post->content}}</p>    
                 </div>
-            @endforeach
+                <div class="meeting_place">
+                    <div class="meeting_place__post">
+                        <h4>〇集合場所</h4>
+                        <p>{{ $post->meeting_place}}</p>    
+                    </div>
+                    <div class="meeting_time">
+                        <div class="meeting_time__post">
+                        <h4>〇集合時間</h4>
+                        <p>{{ $post->meeting_time}}</p>    
+                    </div>
+            
+                    <a href="">{{ $post->category->name }}</a>
+                    <p class="edit">[<a href="/posts/{{ $post->id }}/edit">編集する</a>]</p>
+            <form action="/posts/{{ $post->id }}" id="form_delete" method="post" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button onclick="deletePost()">delete</button> 
+            </form>
         </div>
         
-            </div>
+        <div class='comments'>
+                    <h2>*コメント一覧*</h2>
+                     @foreach ($comments as $comment)
+                        <div class='comment'>
+                            <h2 class='comment'>{{ $comment->comments }}</h2>
+                            <p> <投稿者>{{ $comment->user->name }}</p>
+                       </div>
+                     @endforeach
+                </div>
         
-        <h1>コメント作成</h1>
-        <form action="/comments/{{ $post->id }}" method="POST">
-            @csrf
-            
-            <div class="body">
-                <h2>本文</h2>
-                <textarea name="comment[comments]" placeholder="今日も1日お疲れさまでした。"></textarea>
-            </div>
-            <input type="submit" value="コメントする"/>
-        </form>
-        <div class="back">[<a href="/">back</a>]</div>
-    
-    </div>
+            <h2>*コメント作成*</h2>
+            <form action="/comments/{{ $post->id }}" method="POST">
+                @csrf
+                    <div class="body">
+                    <textarea name="comment[comments]" placeholder="今日も1日お疲れさまでした。"></textarea>
+                    </div>
+                    <input type="submit" value="コメントする"/>
+            </form>
+        </div>
         
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/">【トップに戻る】</a>
         </div>
-        
         <script>
-            function deletePost(e) {
+            function deletePost(e)
+            {
                 'use strict';　
                 event.preventDefault();
-
-                if (confirm( '削除すると複元できません。\n本当に削除しますか？')) {
+                 if (confirm( '削除すると複元できません。\n本当に削除しますか？')) 
+                 {
                     document.getElementById ('form_delete').submit();
                 }
-                
             }
         </script>
     </body>

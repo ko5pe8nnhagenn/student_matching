@@ -9,7 +9,8 @@ class Comment extends Model
 {
   
   
-   protected $fillable = [
+   protected $fillable =
+   [
         'comments',
         'post_id',
         'user_id',
@@ -23,7 +24,7 @@ class Comment extends Model
     }
 
 
-public function post()
+    public function post()
     {
         return $this->hasMany('App\Post');
     }

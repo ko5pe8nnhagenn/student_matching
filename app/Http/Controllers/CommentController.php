@@ -34,14 +34,14 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
    public function store(CommentRequest $request,Post $post, Comment $comment)
-{
-    $input = $request['comment'];
-    $input += ['user_id' => $request->user()->id]; 
-    $input += ['post_id' => $post->id]; 
-    
-    $comment->fill($input)->save();
-    return redirect('/posts/' . $post->id);
-}
+    {
+        $input = $request['comment'];
+        $input += ['user_id' => $request->user()->id]; 
+        $input += ['post_id' => $post->id]; 
+        
+        $comment->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+    }
     /**
      * Display the specified resource.
      *

@@ -9,14 +9,14 @@ class Post extends Model
 {
     use SoftDeletes;
     
-    protected $fillable = [
-    'title',
-    'content',
-    
-     'user_id',
-     'category_id',
-     'meeting_place',
-     'meeting_time',
+    protected $fillable = 
+    [
+            'title',
+            'content',
+             'user_id',
+             'category_id',
+             'meeting_place',
+             'meeting_time',
      ];
     
         public function getPaginateByLimit(int $limit_count = 5)
@@ -38,9 +38,10 @@ class Post extends Model
     }
     
     
-    public function comments(){
-      return $this->belongsTo(\App\Comment::class);
-    }
+        public function comments()
+    {
+        return $this->belongsTo(\App\Comment::class);
+    }   
 
 }
 
