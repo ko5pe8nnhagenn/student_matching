@@ -28,5 +28,3 @@ Laravelを押すとトップページへ
 集合場所　時間、他の友達もいっしょにいいかなど細かい相談も可能です。
 ![image](https://user-images.githubusercontent.com/92908525/153834146-567d3f9b-7dbd-40e3-bf7c-496fd24a3dc6.png)
 
-* 作成者　橋本侑季
-* 所属　長野大学
